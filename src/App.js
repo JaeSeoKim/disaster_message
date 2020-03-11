@@ -9,7 +9,6 @@ import Navigation from './components/Navigation';
 
 
 function App() {
-  console.log(process.env.REACT_APP_API_KEY);
   return <div>
     <HashRouter>
       <Navigation/>
