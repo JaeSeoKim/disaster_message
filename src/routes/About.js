@@ -7,7 +7,7 @@ const About = () => {
   return (
     <>
       <Typography>
-        <a href="https://jaeseokim.github.io/movie-app-2020/">
+        <a href="https://github.com/JaeSeoKim/disaster_message/">
           <Title>Disaster_message</Title>
         </a>
         <Paragraph>
