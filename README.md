@@ -7,12 +7,19 @@
 
 ### pages
  
- - [ ] Home - "/"
+ - [x] Home - "/"
 
  - [ ] Location - "/location"
  
  - [ ] Detail - "/detail/:id"
  
- - [ ] About - "/about"
+ - [x] About - "/about"
+
+### Logic
+
+ - [ ] Location 관련 개발 필요
+ - [ ] MsgContainer의 하드코딩 수정 필요... ( 어렵다..)
+ - [ ] Antd 디자인 관련 공부.....
+  
  
  

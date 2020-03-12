@@ -7,7 +7,12 @@ const About = () => {
   return (
     <>
       <Typography>
-        <Title>재난 문자 조회 사이트</Title>
+        <a href="https://jaeseokim.github.io/movie-app-2020/">
+          <Title>Disaster_message</Title>
+        </a>
+        <Paragraph>
+          이 프로젝트는 한국 공공데이터 포털에서 제공하는 `재난문자방송 발령현황 서비스 API` 를 이용하여 제작 하였습니다.
+        </Paragraph>
         <Title level={4}>Created by JaeSeoKim</Title>
         <a href="https://github.com/JaeSeoKim">
           <Title level={4}><GithubOutlined/> Github</Title>
@@ -15,10 +20,6 @@ const About = () => {
         <a href="https://jaeseokim.tistory.com/">
           <Title level={4}><IdcardOutlined/> Blog</Title>
         </a>
-        <Paragraph>
-          리액트 어렵다 ㅠㅠ 누가 리액트좀 알려줘~
-          어려워 ㅠㅠ
-        </Paragraph>
       </Typography>
     </>
   );
