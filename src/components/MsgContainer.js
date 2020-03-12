@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Card , message, Row } from "antd";
+import React, { useState } from "react";
+import { Card , message } from "antd";
 import InfinityScroll from "../modules/InfinityScroll";
 import Axios from "axios";
 
@@ -11,7 +11,7 @@ let pageNo = 1;
 
 var MsgData = [];
 
-const MsgContainer = ({data, no}) =>{
+const MsgContainer = ({data}) =>{
 
   const [flag, setFlag] = useState(Date.now());
 
@@ -55,7 +55,7 @@ const MsgContainer = ({data, no}) =>{
       </Card>
     ))
     }
-    {flag == Date.now() ? MsgData.map((value, index) => (
+    {flag === Date.now() ? MsgData.map((value, index) => (
       <Card hoverable style={{ maxWidth: 500,  margin: "auto", marginBottom: 13}}
       title={value.location_name+"\t"+value.create_date} key={value.md101_sn}>
       {value.msg}

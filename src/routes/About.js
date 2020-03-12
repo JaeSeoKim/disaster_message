@@ -1,11 +1,10 @@
 import React from "react";
-import { Typography, Divider } from "antd";
+import { Typography } from "antd";
 import {GithubOutlined, IdcardOutlined} from '@ant-design/icons';
-const { Title, Paragraph, Text } = Typography;
+const { Title, Paragraph } = Typography;
 
 const About = () => {
   return (
-    <>
       <Typography>
         <a href="https://github.com/JaeSeoKim/disaster_message/">
           <Title>Disaster_message</Title>
@@ -21,7 +20,6 @@ const About = () => {
           <Title level={4}><IdcardOutlined/> Blog</Title>
         </a>
       </Typography>
-    </>
   );
 };
 

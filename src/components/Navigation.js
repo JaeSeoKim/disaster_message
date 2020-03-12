@@ -8,8 +8,6 @@ import {
   NotificationOutlined
 } from '@ant-design/icons';
 
-const { SubMenu } = Menu;
-
 const Navigation = () => {
 
   return (
