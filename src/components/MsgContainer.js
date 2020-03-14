@@ -2,23 +2,25 @@ import React, { useState, useEffect } from "react";
 import { Card, message } from "antd";
 import InfinityScroll from "../action/InfinityScroll";
 import useDisasterMsgAPI from '../action/useDisasterMsgAPI'
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 
 const key = process.env.REACT_APP_API_KEY;
 
 let isLoding = false
+let no;
 
 const MsgContainer = ({ data, pageNo }) => {
-
-  const { get } = useDisasterMsgAPI();
+  no = pageNo;
+  console.log("container out : ", pageNo);
+  const { get } = useDisasterMsgAPI(pageNo);
 
   InfinityScroll(async () => {
     if (!isLoding) {
       isLoding = true;
-      await get(pageNo + 1);
+      await get(no);
       isLoding = false;
-      message.success({ content: "Loaded!", key: pageNo + 1, duration: 2 });
+      message.success({ content: "Loaded!", key: no, duration: 2 });
     }
   });
 

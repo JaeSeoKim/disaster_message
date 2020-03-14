@@ -1,21 +1,13 @@
 import { createStore } from "redux";
 
 const ADD_DATA = "addData";
-const UPDATE_PAGENO = "updatePageNo";
 const UPDATE_LODING = "updateLoding";
 const SET_ERROR = "setError";
 
-const addData = (value) => {
+const addData = (data) => {
   return {
     type: ADD_DATA,
-    data: value
-  }
-};
-
-const updatePageNo = (value) => {
-  return {
-    type: UPDATE_PAGENO,
-    pageNo: value
+    data: data
   }
 };
 
@@ -24,24 +16,19 @@ const reducer = (state = {
   error: null,
   data: [],
   pageNo: 1
-}, action = {}) => {
+}, action) => {
   switch (action.type) {
     case ADD_DATA:
       return {
         ...state,
-        data: state.data.concat(action.data)
+        data: state.data.concat(action.data),
+        pageNo: state.pageNo + 1
       };
 
     case UPDATE_LODING:
       return {
         ...state,
         isLoding: !state.isLoding
-      };
-
-    case UPDATE_PAGENO:
-      return {
-        ...state,
-        pageNo: action.pageNo
       };
 
     case SET_ERROR:
@@ -58,8 +45,7 @@ const reducer = (state = {
 const messages = createStore(reducer);
 
 export const actionCreators = {
-  addData,
-  updatePageNo
+  addData
 };
 
 export default messages;

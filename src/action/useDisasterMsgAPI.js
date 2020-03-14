@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Axios from "axios";
 import { actionCreators } from '../store/messages';
 
@@ -9,7 +9,7 @@ export const useDisasterMsgAPI = () => {
   const dispatch = useDispatch();
 
   const get = async (pageNo) => {
-
+    console.log("api : ",pageNo)
     await Axios.get("http://apis.data.go.kr/1741000/DisasterMsg2/getDisasterMsgList", {
       params: {
         ServiceKey: key,
@@ -21,7 +21,6 @@ export const useDisasterMsgAPI = () => {
     })
       .then(response => {
         dispatch(actionCreators.addData(response.data.DisasterMsg[1].row));
-        dispatch(actionCreators.updatePageNo(pageNo));
       })
       .catch(error => {
         console.log(error);
