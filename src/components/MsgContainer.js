@@ -13,10 +13,10 @@ const MsgContainer = ({ data, pageNo }) => {
 
   const { get } = useDisasterMsgAPI();
 
-  InfinityScroll(() => {
+  InfinityScroll(async () => {
     if (!isLoding) {
       isLoding = true;
-      get(pageNo + 1);
+      await get(pageNo + 1);
       isLoding = false;
       message.success({ content: "Loaded!", key: pageNo + 1, duration: 2 });
     }
@@ -28,20 +28,22 @@ const MsgContainer = ({ data, pageNo }) => {
 
   return <div >
     {data.map((value, index) => (
-      <Link to={{
-        pathname: `/detail/${value.md101_sn}`,
-        state: {
-          location: value.location_name,
-          date: value.create_date,
-          msg: value.msg,
-          id: value.md101_sn
-        }
-      }} key={index} >
-        <Card hoverable style={{ maxWidth: 500, margin: "auto", marginBottom: 13 }}
-          title={value.location_name + "\t" + value.create_date} >
-          {value.msg}
-        </Card>
-      </Link>
+      <div style={{ margin: "auto", maxWidth: 550 }} key={index} >
+        <Link to={{
+          pathname: `/detail/${value.md101_sn}`,
+          state: {
+            location: value.location_name,
+            date: value.create_date,
+            msg: value.msg,
+            id: value.md101_sn
+          }
+        }} >
+          <Card hoverable style={{ maxWidth: 500, margin: "auto", marginBottom: 13 }}
+            title={value.location_name + "\t" + value.create_date} >
+            {value.msg}
+          </Card>
+        </Link>
+      </div>
     ))
     }
     <Card loading={true} style={{ maxWidth: 500, margin: "auto", marginBottom: 13 }} />

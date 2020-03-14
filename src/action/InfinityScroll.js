@@ -12,7 +12,7 @@ const InfinityScroll = (callBack) => {
         callBack();
       }
     }
-  }
+  } 
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
