@@ -9,20 +9,14 @@ import {
 } from '@ant-design/icons';
 
 const Navigation = () => {
-
   return (
-    <Affix offsetTop={20}>
-      <div style={{
-        width: 256,
-        position: "fixed",
-        display: "flex"
-      }}>
+    <Affix >
+      <div>
         <Menu
-          defaultSelectedKeys={['1']}
+          defaultSelectedKeys={['home']}
           defaultOpenKeys={['menu']}
-          mode="inline"
+          mode="horizontal"
           theme="white"
-          inlineCollapsed={true}
         >
           <Menu.Item key="home">
             <NotificationOutlined />

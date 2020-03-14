@@ -3,11 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/polyfill": "^7.8.7",
     "antd": "^4.0.2",
     "axios": "^0.19.2",
-    "babel-cli": "^6.26.0",
-    "babel-preset-react": "^6.24.1",
     "cra-template": "1.0.2",
     "gh-pages": "^2.2.0",
     "prop-types": "^15.7.2",
@@ -39,12 +36,8 @@
       "last 1 safari version"
     ]
   },
+  "homepage": ".",
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.7",
-    "@babel/preset-env": "^7.8.7",
-    "@babel/preset-react": "^7.8.3",
-    "babel-plugin-import": "^1.13.0"
-  },
-  "homepage": "."
+    "prettier": "^1.19.1"
+  }
 }
