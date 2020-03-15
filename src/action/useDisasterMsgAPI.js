@@ -9,7 +9,7 @@ export const useDisasterMsgAPI = () => {
   const dispatch = useDispatch();
 
   const get = async (pageNo) => {
-    console.log("api : ",pageNo)
+    console.log("api : ", pageNo)
     await Axios.get("http://apis.data.go.kr/1741000/DisasterMsg2/getDisasterMsgList", {
       params: {
         ServiceKey: key,

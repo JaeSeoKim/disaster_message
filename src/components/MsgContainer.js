@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, message } from "antd";
+import { Card, message, Button } from "antd";
 import InfinityScroll from "../action/InfinityScroll";
 import useDisasterMsgAPI from '../action/useDisasterMsgAPI'
 import { connect, useSelector } from 'react-redux';
@@ -13,7 +13,7 @@ let no;
 const MsgContainer = ({ data, pageNo, searchQuery }) => {
   no = pageNo;
   console.log("Query : ", searchQuery)
-  const { get } = useDisasterMsgAPI(pageNo,[]);
+  const { get } = useDisasterMsgAPI(pageNo, []);
 
   InfinityScroll(async () => {
     if (!isLoding) {
@@ -29,12 +29,14 @@ const MsgContainer = ({ data, pageNo, searchQuery }) => {
   }, [])
 
 
-  if (searchQuery !== "") {
+  if (data.length === 0) {
+    return <div>
+      <Card loading={true} style={{ maxWidth: 500, margin: "auto", marginBottom: 13 }} />
+    </div>
+
+  } else if (searchQuery !== "") {
     const filterData = data.filter(value =>
       value.location_name.includes(searchQuery));
-
-    let scrollHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
-    let clientHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
 
     return <div >
       {filterData.map((value, index) => (
@@ -56,7 +58,8 @@ const MsgContainer = ({ data, pageNo, searchQuery }) => {
         </div>
       ))
       }
-      <Card loading={true} style={{ maxWidth: 500, margin: "auto", marginBottom: 13 }} />
+      <Button style={{ maxWidth: 500, marginBottom: 13 }}
+        onClick={async () => await get(no)} block>더보기</Button>
     </div>
   } else {
     return <div >
@@ -79,7 +82,8 @@ const MsgContainer = ({ data, pageNo, searchQuery }) => {
         </div>
       ))
       }
-      <Card loading={true} style={{ maxWidth: 500, margin: "auto", marginBottom: 13 }} />
+      <Button style={{ maxWidth: 500, marginBottom: 13 }}
+        onClick={async () => await get(no)} block>더보기</Button>
     </div>
   }
 
