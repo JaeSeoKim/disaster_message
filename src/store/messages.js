@@ -2,6 +2,7 @@ import { createStore } from "redux";
 
 const ADD_DATA = "addData";
 const UPDATE_LODING = "updateLoding";
+const SET_SEARCHQUERY = "setSearchQuery";
 const SET_ERROR = "setError";
 
 const addData = (data) => {
@@ -11,7 +12,15 @@ const addData = (data) => {
   }
 };
 
+const searchQuery = (query) => {
+  return {
+    type : SET_SEARCHQUERY,
+    searchQuery : query
+  }
+}
+
 const reducer = (state = {
+  searchQuery: "",
   isLoding: true,
   error: null,
   data: [],
@@ -24,6 +33,12 @@ const reducer = (state = {
         data: state.data.concat(action.data),
         pageNo: state.pageNo + 1
       };
+    
+    case SET_SEARCHQUERY:
+      return {
+        ...state,
+        searchQuery : action.searchQuery
+      }
 
     case UPDATE_LODING:
       return {
@@ -45,7 +60,8 @@ const reducer = (state = {
 const messages = createStore(reducer);
 
 export const actionCreators = {
-  addData
+  addData,
+  searchQuery
 };
 
 export default messages;

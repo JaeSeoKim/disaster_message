@@ -9,12 +9,12 @@
  
  - [x] Home - "/"
  - [ ] Location - "/location"
+   - [ ] 검색 창을 통해 Store 내부의 내용 필터링 하여 출력 기본 기능은 Home의 기능과 동일
  - [ ] Detail - "/detail/:id"
    - [ ] MSG 클릭시 내용을 바탕으로 구글 검색하여 크롤링 후 데이터 가공하여 제공
    - [x] 재난문자의 지역을 기반으로 마스크 구매 가능처 제공
-     - [x] 간단 리스트 출력
- - [x] About -
- - [ ]  "/about"
+     - [x] 간단 리스트 출력 
+ - [x] About - "/about"
 
 ### Logic
 

@@ -10,10 +10,10 @@ const key = process.env.REACT_APP_API_KEY;
 let isLoding = false
 let no;
 
-const MsgContainer = ({ data, pageNo }) => {
+const MsgContainer = ({ data, pageNo, searchQuery }) => {
   no = pageNo;
-  console.log("container out : ", pageNo);
-  const { get } = useDisasterMsgAPI(pageNo);
+  console.log("Query : ", searchQuery)
+  const { get } = useDisasterMsgAPI(pageNo,[]);
 
   InfinityScroll(async () => {
     if (!isLoding) {
@@ -28,34 +28,69 @@ const MsgContainer = ({ data, pageNo }) => {
     get(pageNo);
   }, [])
 
-  return <div >
-    {data.map((value, index) => (
-      <div style={{ margin: "auto", maxWidth: 550 }} key={index} >
-        <Link to={{
-          pathname: `/detail/${value.md101_sn}`,
-          state: {
-            location: value.location_name,
-            date: value.create_date,
-            msg: value.msg,
-            id: value.md101_sn
-          }
-        }} >
-          <Card hoverable style={{ maxWidth: 500, margin: "auto", marginBottom: 13 }}
-            title={value.location_name + "\t" + value.create_date} >
-            {value.msg}
-          </Card>
-        </Link>
-      </div>
-    ))
-    }
-    <Card loading={true} style={{ maxWidth: 500, margin: "auto", marginBottom: 13 }} />
-  </div>
+
+  if (searchQuery !== "") {
+    const filterData = data.filter(value =>
+      value.location_name.includes(searchQuery));
+
+    let scrollHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+    let clientHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+
+    return <div >
+      {filterData.map((value, index) => (
+        <div style={{ margin: "auto", maxWidth: 550 }} key={index} >
+          <Link to={{
+            pathname: `/detail/${value.md101_sn}`,
+            state: {
+              location: value.location_name,
+              date: value.create_date,
+              msg: value.msg,
+              id: value.md101_sn
+            }
+          }} >
+            <Card hoverable style={{ maxWidth: 500, margin: "auto", marginBottom: 13 }}
+              title={value.location_name + "\t" + value.create_date} >
+              {value.msg}
+            </Card>
+          </Link>
+        </div>
+      ))
+      }
+      <Card loading={true} style={{ maxWidth: 500, margin: "auto", marginBottom: 13 }} />
+    </div>
+  } else {
+    return <div >
+      {data.map((value, index) => (
+        <div style={{ margin: "auto", maxWidth: 550 }} key={index} >
+          <Link to={{
+            pathname: `/detail/${value.md101_sn}`,
+            state: {
+              location: value.location_name,
+              date: value.create_date,
+              msg: value.msg,
+              id: value.md101_sn
+            }
+          }} >
+            <Card hoverable style={{ maxWidth: 500, margin: "auto", marginBottom: 13 }}
+              title={value.location_name + "\t" + value.create_date} >
+              {value.msg}
+            </Card>
+          </Link>
+        </div>
+      ))
+      }
+      <Card loading={true} style={{ maxWidth: 500, margin: "auto", marginBottom: 13 }} />
+    </div>
+  }
+
 }
+
 
 const mapStateToProps = (state) => {
   return {
     data: state.data,
-    pageNo: state.pageNo
+    pageNo: state.pageNo,
+    searchQuery: state.searchQuery
   };
 }
 

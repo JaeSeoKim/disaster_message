@@ -10,7 +10,7 @@ import {
 
 const Navigation = () => {
   return (
-    <Affix >
+    <Affix style={{marginBottom:10}}>
       <div>
         <Menu
           defaultSelectedKeys={['home']}
