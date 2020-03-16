@@ -5,6 +5,7 @@ import KaKaoMap from "./kakaoMap/KakaoMap";
 import { useSelector } from "react-redux";
 import useGeolocation from "../action/kakaomap/useGeolocation";
 import useSetMarker from "../action/kakaomap/useSetMarker";
+import useCenterChanged from "../action/kakaomap/useCenterChanged";
 
 const { kakao } = window;
 
@@ -13,10 +14,12 @@ const MaskMap = () => {
   const { stores, getMaskDataGeo } = useMaskData();
   const { setMarker } = useSetMarker();
   const { getGeo } = useGeolocation();
+  const {setEvent} = useCenterChanged();
   useEffect(() => {
     getMaskDataGeo(37.4388, 127.1396, 10000).then(()=>{
       getGeo();
       setMarker();
+      setEvent();
     });
   }, []);
   return <div style={{ height: 500 }}>

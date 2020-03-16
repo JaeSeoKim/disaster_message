@@ -39,8 +39,6 @@ const useSetMarker = () => {
   // });
 
   const setMarker = () => {
-    const positions = [];
-    const imageSrc = "https://raw.githubusercontent.com/JaeSeoKim/disaster_message/master/resource/maskMapMarker/blue.png";
     stores.map(value => {
       // value.addr
       // value.created_at
@@ -48,14 +46,28 @@ const useSetMarker = () => {
       // value.remain_stat
       // value.lat,
       // value.lng
-      positions.push({
-        title: value.name,
-        latlng: new kakao.maps.LatLng(value.lat, value.lng)
-      });
-    });
 
-    for (var i = 0; i < positions.length; i++) {
-      
+      var imageSrc = ""
+      switch (value.remain_at) {
+        case "plenty":
+          imageSrc = "https://raw.githubusercontent.com/JaeSeoKim/disaster_message/master/resource/maskMapMarker/green.png"
+          break;
+        case "some":
+          imageSrc = "https://raw.githubusercontent.com/JaeSeoKim/disaster_message/master/resource/maskMapMarker/blue.png"
+          break;
+        case "few":
+          imageSrc = "https://raw.githubusercontent.com/JaeSeoKim/disaster_message/master/resource/maskMapMarker/red.png"
+          break;
+        case "empty":
+          imageSrc = "https://raw.githubusercontent.com/JaeSeoKim/disaster_message/master/resource/maskMapMarker/gray.png"
+          break;
+        case "break":
+          imageSrc = "https://raw.githubusercontent.com/JaeSeoKim/disaster_message/master/resource/maskMapMarker/black.png"
+          break;
+        default:
+          imageSrc = "https://raw.githubusercontent.com/JaeSeoKim/disaster_message/master/resource/maskMapMarker/black.png"
+      }
+
       // 마커 이미지의 이미지 크기 입니다
       var imageSize = new kakao.maps.Size(30, 35);
       // 마커 이미지를 생성합니다    
@@ -64,13 +76,13 @@ const useSetMarker = () => {
       // 마커를 생성합니다
       var marker = new kakao.maps.Marker({
         map: kakaoMap, // 마커를 표시할 지도
-        position: positions[i].latlng, // 마커를 표시할 위치
-        title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+        position: new kakao.maps.LatLng(value.lat, value.lng), // 마커를 표시할 위치
+        title: value.name, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
         image: markerImage // 마커 이미지 
       });
 
-      console.log(marker);
-    }
+    });
+
 
   };
   return { setMarker };
