@@ -26,8 +26,7 @@ const MsgContainer = ({ data, pageNo, searchQuery }) => {
 
   useEffect(() => {
     get(pageNo);
-  }, [])
-
+  }, []);
 
   if (data.length === 0) {
     return <div>
