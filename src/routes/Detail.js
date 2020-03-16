@@ -10,13 +10,13 @@ const Detail = (props) => {
     address,
     count,
     stores,
-    getMaskData
+    getMaskDataAddr
   } = useMaskdata();
   useEffect(() => {
     if (props.location.state === undefined) {
       props.history.push('/');
     } else {
-      getMaskData(props.location.state.location);
+      getMaskDataAddr(props.location.state.location);
     }
   }, []);
 

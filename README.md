@@ -15,6 +15,9 @@
    - [x] 재난문자의 지역을 기반으로 마스크 구매 가능처 제공
      - [x] 간단 리스트 출력 
  - [x] About - "/about"
+ - [ ] MaskMap - "/maskMap"
+   - [ ] KakaoMap - reacte 적용 공부중...
+   - [ ] center_changed event listner 적용 필요
 
 ### Logic
 

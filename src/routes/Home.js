@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import MsgContainer from "../components/MsgContainer";
 import { useDispatch } from 'react-redux';
-import { actionCreators } from '../store/messages';
+import { actionCreators } from '../store/store';
 
 const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    dispatch(actionCreators.searchQuery(""));
+    dispatch(actionCreators.setMsgSearchQuery(""));
   },[])
 
   return <div className="home" style={{ marginTop: 25 }}>

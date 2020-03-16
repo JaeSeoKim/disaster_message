@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import Axios from "axios";
-import { actionCreators } from '../store/messages';
+import { actionCreators } from '../store/store';
 
 const key = process.env.REACT_APP_API_KEY;
 
@@ -20,7 +20,7 @@ export const useDisasterMsgAPI = () => {
       }
     })
       .then(response => {
-        dispatch(actionCreators.addData(response.data.DisasterMsg[1].row));
+        dispatch(actionCreators.addDisasterMsgData(response.data.DisasterMsg[1].row));
       })
       .catch(error => {
         console.log(error);

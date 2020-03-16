@@ -5,7 +5,6 @@ import useDisasterMsgAPI from '../action/useDisasterMsgAPI'
 import { connect, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 
-const key = process.env.REACT_APP_API_KEY;
 
 let isLoding = false
 let no;
@@ -13,7 +12,7 @@ let no;
 const MsgContainer = ({ data, pageNo, searchQuery }) => {
   no = pageNo;
   console.log("Query : ", searchQuery)
-  const { get } = useDisasterMsgAPI(pageNo, []);
+  const { get } = useDisasterMsgAPI(pageNo);
 
   InfinityScroll(async () => {
     if (!isLoding) {
@@ -58,7 +57,10 @@ const MsgContainer = ({ data, pageNo, searchQuery }) => {
       ))
       }
       <Button style={{ maxWidth: 500, marginBottom: 13 }}
-        onClick={async () => await get(no)} block>더보기</Button>
+        onClick={async () => {
+          await get(no);
+          message.success({ content: "Loaded!", key: no, duration: 2 });
+        }} block>더보기</Button>
     </div>
   } else {
     return <div >
@@ -82,7 +84,10 @@ const MsgContainer = ({ data, pageNo, searchQuery }) => {
       ))
       }
       <Button style={{ maxWidth: 500, marginBottom: 13 }}
-        onClick={async () => await get(no)} block>더보기</Button>
+        onClick={async () => {
+          await get(no);
+          message.success({ content: "Loaded!", key: no, duration: 2 });
+        }} block>더보기</Button>
     </div>
   }
 
@@ -91,9 +96,9 @@ const MsgContainer = ({ data, pageNo, searchQuery }) => {
 
 const mapStateToProps = (state) => {
   return {
-    data: state.data,
-    pageNo: state.pageNo,
-    searchQuery: state.searchQuery
+    data: state.disasterMsg.data,
+    pageNo: state.disasterMsg.pageNo,
+    searchQuery: state.disasterMsg.searchQuery
   };
 }
 

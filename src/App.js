@@ -7,9 +7,11 @@ import About from "./routes/About";
 import Error_page from "./routes/Error_page";
 import Navigation from "./components/Navigation";
 import { Provider } from "react-redux";
-import store from "./store/messages";
+import store from "./store/store";
+import MaskMap from "./components/MaskMap";
 
 function App() {
+
   return (
     <Provider store={store}>
       <HashRouter>
@@ -19,10 +21,11 @@ function App() {
           <Route path="/location" exact={true} component={Location} />
           <Route path="/about" exact={true} component={About} />
           <Route path="/detail/:id" exact={true} component={Detail} />
+          <Route path="/maskMap" exact={true} component={MaskMap} />
           <Route component={Error_page} />
         </Switch>
       </HashRouter>
-    </Provider>
+    </Provider >
   );
 }
 

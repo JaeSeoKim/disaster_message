@@ -1,7 +1,7 @@
 import React from "react";
 import { Select, Affix } from "antd";
 import MsgContainer from "../components/MsgContainer";
-import { actionCreators } from "../store/messages";
+import { actionCreators } from "../store/store";
 import { useDispatch } from "react-redux";
 
 const { Option } = Select;
@@ -14,7 +14,7 @@ const Location = () => {
 
   const setQuery = (value) => {
     console.log(`selected ${value}`);
-    dispatch(actionCreators.searchQuery(value));
+    dispatch(actionCreators.setMsgSearchQuery(value));
   }
 
 
