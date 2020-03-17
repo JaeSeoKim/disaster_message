@@ -90,6 +90,7 @@ const useMaskData = () => {
           count,
           stores } = response.data
         dispatch(actionCreators.setStoreList(stores));
+        console.log(stores.length);
       }).catch(error => {
         console.log(error);
       });

@@ -9,7 +9,7 @@ const MaskStoreList = ({ stores, address }) => {
     <div className="more_Info">
       <Collapse style={{ maxWidth: 500, margin: "auto", marginBottom: 13 }}>
         <Panel header={address + "의 현재 구매 가능한 마스크 판매처"} key="maskMap">
-          <h3 style={{textAlign:"le"}}>
+          <h3 style={{textAlign:"left"}}>
             <p>현재 구매 가능한 구매처만 목록화 했습니다.</p>
             <p>해당 카드를 클릭 하시면 판매처 주소를 확인 할 수 있습니다.</p>
           </h3>

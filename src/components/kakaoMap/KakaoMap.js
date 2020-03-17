@@ -9,7 +9,7 @@ const { kakao } = window;
 const KakaoMap = () => {
 
   const dispatcher = useDispatch();
-  
+
   useEffect(() => {
     const container = document.getElementById('mask-map');
     const options = {
@@ -17,6 +17,8 @@ const KakaoMap = () => {
       level: 3
     };
     const map = new kakao.maps.Map(container, options);
+    
+
     dispatcher(actionCreators.setMap(map), [map]);
   }, [])
 

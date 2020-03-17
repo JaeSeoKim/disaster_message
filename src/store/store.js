@@ -26,6 +26,7 @@ const setMsgSearchQuery = (query) => {
 
 const SET_MAP = "setMap";
 const SET_STORE_LIST = "setStoreList";
+const ADD_MARKER = "addMarker";
 
 const setMap = (map) => {
   return {
@@ -42,6 +43,15 @@ const setStoreList = (storeList) => {
   };
 };
 
+const addMarker = (marker, overlay) => {
+  return {
+    type: ADD_MARKER,
+    marker: marker,
+    overlay: overlay
+  }
+};
+
+
 
 const reducer = (state = {
   disasterMsg: {
@@ -51,9 +61,12 @@ const reducer = (state = {
   },
   maskMap: {
     map: null,
-    storeList: []
+    storeList: [],
+    oldMarker: [],
+    oldOverlay: []
   }
 }, action) => {
+  console.log(action);
   switch (action.type) {
     case ADD_DISASTER_MSG_DATA:
       return {
@@ -75,7 +88,7 @@ const reducer = (state = {
         }
       };
       break;
-      
+
     case SET_MAP:
       return {
         ...state,
@@ -87,7 +100,6 @@ const reducer = (state = {
       break;
 
     case SET_STORE_LIST:
-      console.log(action);
       return {
         ...state,
         maskMap: {
@@ -96,6 +108,20 @@ const reducer = (state = {
         }
       };
       break;
+
+    case ADD_MARKER:
+      console.log("adding... :",action);
+      return {
+        ...state,
+        maskMap: {
+          ...state.maskMap,
+          oldMarker: action.marker,
+          oldOverlay: action.overlay
+        }
+      };
+      break;
+
+
     default:
       return state;
   }
@@ -107,7 +133,8 @@ export const actionCreators = {
   setMsgSearchQuery,
   addDisasterMsgData,
   setStoreList,
-  setMap
+  setMap,
+  addMarker
 };
 
 export default store;
