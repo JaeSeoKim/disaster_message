@@ -77,7 +77,6 @@ const reducer = (state = {
           pageNo: state.disasterMsg.pageNo + 1
         }
       };
-      break;
 
     case SET_MSG_SEARCHQUERY:
       return {
@@ -87,7 +86,6 @@ const reducer = (state = {
           searchQuery: action.searchQuery
         }
       };
-      break;
 
     case SET_MAP:
       return {
@@ -97,7 +95,6 @@ const reducer = (state = {
           map: action.map
         }
       };
-      break;
 
     case SET_STORE_LIST:
       return {
@@ -107,7 +104,6 @@ const reducer = (state = {
           storeList: action.storeList
         }
       };
-      break;
 
     case ADD_MARKER:
       console.log("adding... :",action);
@@ -119,8 +115,6 @@ const reducer = (state = {
           oldOverlay: action.overlay
         }
       };
-      break;
-
 
     default:
       return state;
