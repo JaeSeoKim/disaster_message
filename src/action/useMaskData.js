@@ -1,8 +1,6 @@
 import { useState } from "react";
 import Axios from "axios";
-import useSetMarker from "./kakaomap/useSetMarker";
 import { useDispatch } from "react-redux";
-import { actionCreators } from "../store/store";
 
 const useMaskData = () => {
   /*
@@ -71,32 +69,7 @@ const useMaskData = () => {
       });
   };
 
-  /*
-  url	/storesByGeo/json
-  key	항목명(국문)	type	기본값	필수	항목설명
-  Lat	위도	number		N	wgs84 좌표계 / 
-  최소:33.0, 최대:43.0
-  lng	경도	number		N	wgs84 표준 / 
-  최소:124.0, 최대:132.0
-  m	반경(미터)	integer		N	최대 5000(5km)까지 조회 가능
-  */
-
-  const getMaskDataGeo = async (lat, lng, m) => {
-    console.log("lat: ", lat, " lng: ", lng, " m: ", m);
-    await Axios.get(
-      `https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?lat=${lat}&lng=${lng}&m=${m}`)
-      .then(response => {
-        const {
-          count,
-          stores } = response.data
-        dispatch(actionCreators.setStoreList(stores));
-        console.log(stores.length);
-      }).catch(error => {
-        console.log(error);
-      });
-  };
-
-  return { ...maskData, getMaskDataAddr, getMaskDataGeo };
+  return { ...maskData, getMaskDataAddr};
 }
 
 export default useMaskData;

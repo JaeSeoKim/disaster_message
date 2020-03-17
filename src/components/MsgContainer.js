@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Card, message, Button } from "antd";
 import InfinityScroll from "../action/InfinityScroll";
 import useDisasterMsgAPI from '../action/useDisasterMsgAPI'

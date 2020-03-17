@@ -25,17 +25,11 @@ const Navigation = () => {
               <span>재난문자 목록</span>
             </NavLink>
           </Menu.Item>
-          <Menu.Item key="location">
-            <PushpinOutlined />
-            <NavLink to="/location">
-              <span>지역별 재난문자</span>
-            </NavLink>
-          </Menu.Item>
           <Menu.Item key="maskMap">
             <EnvironmentOutlined />
-            <NavLink to="/maskMap">
+            <a href="https://map.devjs.cf/">
               <span>마스크맵</span>
-            </NavLink>
+            </a>
           </Menu.Item>
           <Menu.Item key="about">
             <InfoCircleOutlined />
