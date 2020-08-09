@@ -26,7 +26,6 @@ const Detail = (props) => {
     {data === undefined ? <Error_page />
       :
       <div>
-        <h1>개발중..........</h1>
         <Card style={{ maxWidth: 500, margin: "auto", marginBottom: 13 }}
           title={data.location + "\t" + data.date} >
           {data.msg}
